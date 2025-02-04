@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>⋆𐙚₊˚⊹♡送给111⋆♡₊˚⊹𐙚</title>
+    <!-- 通用网站图标 -->
+    <link rel="icon" href="to番茄\image\1.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="to番茄\image\1.ico" type="image/x-icon">
+
+    <!-- Apple设备图标 -->
+    <link rel="apple-touch-icon" sizes="180x180" href="to番茄\image\1.jpg">
+
+    <!-- Windows磁贴图标 -->
+    <meta name="msapplication-TileImage" content="to番茄\image\1.jpg">
+    <style>
+        /* 在<style>中添加字体声明 */
+        @font-face {
+            font-family: 'Fusion Pixel 10px Monospaced zh_hans Regular';
+            src: url('fonts/fusion-pixel.ttf') format('truetype');
+        }
+
+        body {
+            font-family: 'Fusion Pixel 10px Monospaced zh_hans Regular', 'Fusion Pixel 10px Monospaced zh_hans Regular', sans-serif;
+        }
+
+        body {
+
+            background: #faecd5;
+            font-family: 'Fusion Pixel 10px Monospaced zh_hans Regular';
+            text-align: center;
+            padding: 20px;
+            overflow: scroll;
+            /* 滚动条 */
+            position: relative;
+            /* 确保弹幕定位正确 */
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 10% 10%, rgba(255, 235, 205, 0.2) 20%, transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(255, 235, 205, 0.2) 20%, transparent 40%);
+            z-index: -2;
+        }
+
+        h1 {
+            color: #e2bba6;
+            font-size: 40px;
+            animation: jump 1s infinite;
+        }
+
+        /* 新图层样式 */
+        .overlay {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 200%;
+            background: rgba(255, 254, 248, 0.473);
+            /* 半透明黑色 */
+            z-index: -1;
+            /* 确保在内容下方 */
+            border-radius: 30px;
+            /* 圆角效果 */
+        }
+
+        /* 弹幕样式 */
+        .barrage {
+            position: absolute;
+            white-space: nowrap;
+            font-size: 20px;
+            font-family: 'Fusion Pixel 10px Monospaced zh_hans Regular';
+            color: #d4ab88;
+            animation: moveRight 10s linear;
+        }
+
+        @keyframes moveRight {
+            from {
+                transform: translateX(100vw);
+            }
+
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* 记数按钮样式 */
+        .counter-box {
+            margin-top: 20px;
+            font-family: 'Fusion Pixel 10px Monospaced zh_hans Regular';
+            font-size: 20px;
+            color: #d4ab88;
+        }
+
+
+        /* 鼓励语框样式 */
+        .encouragement-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: 20px auto;
+            font-size: 24px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        /* 左边图层样式 */
+        .left-box {
+            position: absolute;
+            top: 100%;
+            left: 12%;
+            width: 35%;
+            height: 25%;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Fusion Pixel 10px Monospaced zh_hans Regular';
+            font-size: 18px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 右侧图层样式 */
+        .right-box {
+            position: absolute;
+            top: 20%;
+            right: 11%;
+            width: 20%;
+            height: auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 日程功能样式 */
+        .todo-container {
+            font-size: 16px;
+        }
+
+        #todo-input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #e2bba6;
+            border-radius: 5px;
+        }
+
+        .todo-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .todo-buttons button {
+            flex: 1;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            background: #e2bba6;
+            color: white;
+            cursor: pointer;
+        }
+
+        .todo-buttons button:hover {
+            background: #d4ab88;
+        }
+
+        #todo-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .todo-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 0;
+        }
+
+        .todo-item input[type="checkbox"] {
+            accent-color: #e2bba6;
+            cursor: pointer;
+        }
+
+        .todo-item.completed {
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+
+        /* 倒数日图层样式 */
+        .middle-box {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            width: 35%;
+            height: 25%;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .left-box button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background: #66554c;
+            color: white;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        /* 图片框样式 */
+        .photo-frame {
+            width: 400px;
+            height: 400px;
+            border: 5px solid white;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: absolute;
+            bottom: 25px;
+            left: 100px;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .photo-frame:hover img {
+            transform: scale(1.1);
+        }
+
+        /* 爱心雨按钮 */
+        .rain-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: #ff9eb5;
+            border: none;
+            border-radius: 20px;
+            color: white;
+            font-family: 'Fusion Pixel 10px Monospaced zh_hans Regular';
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        /* 爱心雨特效 */
+        .heart-rain {
+            position: fixed;
+            pointer-events: none;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 999;
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff6b6b;
+            font-size: 24px;
+            animation: fall 0.1s linear infinite;
+        }
+
+        /* 确保动画正确定义 */
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* 增加层级确保爱心显示 */
+        .heart-rain {
+            z-index: 9999;
+            /* 高于其他元素 */
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="overlay"></div>
+    <h1>⋆𐙚₊˚⊹♡送给111⋆♡₊˚⊹𐙚</h1>
+
+
+    <p>Wish you all the best!</p>
+    <p>你那边今天也是晴天吗？</p>
+    <p>𖦹 ׂ 𓈒 🥞 ⋆ 𖦹 ׂ 𓈒 🥞 ⋆ 𖦹 ׂ 𓈒 🥞 ⋆ 𖦹 ׂ 𓈒 🥞 ⋆ 𖦹 ׂ 𓈒 🥞 ⋆ ۪</p>
+    <!-- 自动播放音乐-->
+    <audio autoplay loop>
+        <source src="https://music.163.com/song?id=408055953&uct2=U2FsdGVkX1/WcnQOp0ZnogZdoDSThSmyJg55fwRZEwE="
+            type="audio/ogg">
+    </audio>
+    <!-- 鼓励语框 -->
+    <div class="encouragement-box" onclick="showEncouragement()">
+        <p id="encouragement-text">点击看我想对你说的话</p>
+    </div>
+
+    <p>▶︎ •၊၊||၊|။||||။‌‌‌‌‌၊|• 0:10 ۪</p>
+    <button class="rain-button" onclick="startHeartsRain()">这是什么？</button>
+    <!-- 左边图层 -->
+    <div class="left-box">
+        <button onclick="updateCounter()">click here!</button>
+        <p>共额外增加 <span id="counter">0</span> 点好运值</p>
+    </div>
+    <!-- 中间图层 -->
+    <div class="middle-box">
+        <p>˖(づ๑•ᴗ•๑)づ🎂˖</p>
+        <!-- 倒数日功能 -->
+        <div>
+            <p>距离 <span id="target-date">番茄大王23岁生日</span> 还有：</p>
+            <p><span id="days-left">0</span></p>
+        </div>
+    </div>
+    <!-- 右侧图层 -->
+    <div class="right-box">
+        <!-- 日程功能 -->
+        <div class="todo-container">
+            <input type="text" id="todo-input" placeholder="输入待办事项">
+            <div class="todo-buttons">
+                <button onclick="addTodo()">添加</button>
+                <button onclick="completeAll()">所有事项完成</button>
+            </div>
+            <ul id="todo-list"></ul>
+        </div>
+    </div>
+    <!-- 在<body>中添加 -->
+    <div class="photo-frame">
+        <img src="https://i.pinimg.com/736x/6a/84/bf/6a84bf461403b4dad0a2757cefd96587.jpg" , alt="我们的回忆">
+    </div>
+
+    <script>
+        // 弹幕内容
+        const messages = [
+            "番茄宝宝天天开心", "我会永远支持你！", "揉揉揉揉揉揉", "你是最棒的！", "加油！", "从没怀疑过你", "🍅", "不愧是番茄~", "KissKiss"
+        ];
+
+        // 生成弹幕
+        function createBarrage() {
+            const barrage = document.createElement('div');
+            barrage.className = 'barrage';
+            barrage.textContent = messages[Math.floor(Math.random() * messages.length)];
+            barrage.style.top = Math.random() * 90 + 'vh'; // 随机高度
+            document.body.appendChild(barrage);
+
+            // 弹幕结束后移除
+            setTimeout(() => {
+                barrage.remove();
+            }, 10000); // 10秒后移除
+        }
+
+        // 每隔1秒生成一条弹幕
+        setInterval(createBarrage, 1000);
+
+        // 鼓励语内容
+        const encouragements = [
+            "你是最棒的！", "还想一起吃漂亮饭", "相信自己𖹭", "ദ്ദി •⩊• )", "好运即将发生˚⊹", "不要熬夜啦", "今天有好好吃饭吗？", "据说出门带糖会有好运加持", "今天的开运好物是热水澡", "今天有没有好好喝水呀", "看到本条消息立即提肛三十秒", "放下手机做一套眼保健操吧~", "你知道深呼吸三次会让人放松40%吗？", "这个周末好像很适合看电影哦", "和毛茸茸的朋友见面吧"
+        ];
+
+        // 显示随机鼓励语
+        function showEncouragement() {
+            const text = document.getElementById('encouragement-text');
+            text.textContent = encouragements[Math.floor(Math.random() * encouragements.length)];
+        }
+        let count = 0;
+
+        // 更新记数
+        function updateCounter() {
+            count++;
+            document.getElementById('counter').textContent = count;
+        }
+        // 设置目标日期（格式：YYYY-MM-DD）
+        const targetDate = new Date('2025-8-5');
+
+        // 更新倒数日
+        function updateCountdown() {
+            const now = new Date(); // 当前时间
+            const timeDiff = targetDate - now; // 时间差（毫秒）
+
+            // 计算剩余天数
+            const daysLeft = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+
+            // 显示剩余天数
+            if (daysLeft === 0) {
+                document.getElementById('days-left').textContent = '生日快乐！';
+            } else if (daysLeft < 0) {
+                document.getElementById('days-left').textContent = '快乐不过期';
+            } else {
+                document.getElementById('days-left').textContent = `${daysLeft} 天`;
+            }
+        }
+
+        // 页面加载时更新倒数日
+        updateCountdown();
+
+        // 每天更新一次倒数日
+        setInterval(updateCountdown, 1000 * 60 * 60 * 24);
+
+        // 修改后的爱心雨函数（替换原有代码）
+        let rainInterval;
+
+        function startHeartsRain() {
+            // 清理之前的爱心雨
+            if (rainInterval) {
+                clearInterval(rainInterval);
+                document.querySelectorAll('.heart-rain').forEach(el => el.remove());
+            }
+
+            // 创建爱心容器
+            const container = document.createElement('div');
+            container.className = 'heart-rain';
+            document.body.appendChild(container);
+
+            // 生成爱心
+            rainInterval = setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤';
+                heart.style.left = Math.random() * 95 + 'vw'; // 防止溢出
+                heart.style.animation = `fall ${Math.random() * 2 + 3}s linear`; // 随机速度
+                container.appendChild(heart);
+            }, 100);
+
+            // 5秒后自动清理
+            setTimeout(() => {
+                clearInterval(rainInterval);
+                container.remove();
+            }, 20000);
+        }
+        // 从 localStorage 加载待办事项
+        function loadTodos() {
+            const todos = JSON.parse(localStorage.getItem('todos') || '[]');
+            const list = document.getElementById('todo-list');
+            list.innerHTML = ''; // 清空现有列表
+
+            todos.forEach(todo => {
+                const li = document.createElement('li');
+                li.className = `todo-item${todo.completed ? ' completed' : ''}`;
+                li.innerHTML = `
+            <input type="checkbox" ${todo.completed ? 'checked' : ''}>
+            <span>${todo.text}</span>
+        `;
+                li.querySelector('input').onchange = function () {
+                    li.classList.toggle('completed', this.checked);
+                    saveTodos(); // 状态变更时保存
+                };
+                list.appendChild(li);
+            });
+        }
+
+        // 保存待办事项到 localStorage
+        function saveTodos() {
+            const todos = [];
+            document.querySelectorAll('#todo-list .todo-item').forEach(item => {
+                todos.push({
+                    text: item.querySelector('span').textContent,
+                    completed: item.querySelector('input').checked
+                });
+            });
+            localStorage.setItem('todos', JSON.stringify(todos));
+        }
+
+        // 页面加载时读取数据
+        window.onload = function () {
+            loadTodos();
+            // 其他初始化代码...
+        };
+        function addTodo() {
+            const input = document.getElementById('todo-input');
+            const text = input.value.trim();
+
+            if (!text) {
+                alert('请输入内容');
+                return;
+            }
+
+            // 添加新事项
+            const list = document.getElementById('todo-list');
+            const li = document.createElement('li');
+            li.className = 'todo-item';
+            li.innerHTML = `
+        <input type="checkbox">
+        <span>${text}</span>
+    `;
+            li.querySelector('input').onchange = function () {
+                li.classList.toggle('completed', this.checked);
+                saveTodos(); // 保存状态
+            };
+            list.appendChild(li);
+
+            input.value = '';
+            saveTodos(); // 保存新事项
+        }
+        function completeAll() {
+            const checkboxes = document.querySelectorAll('#todo-list input[type="checkbox"]');
+            let allCompleted = true;
+
+            checkboxes.forEach(checkbox => {
+                if (!checkbox.checked) allCompleted = false;
+            });
+
+            if (allCompleted) {
+                localStorage.removeItem('todos'); // 清空存储
+                document.getElementById('todo-list').innerHTML = ''; // 清空列表
+                alert('太棒啦~~~');
+            } else {
+                alert('还有未完成的事项哦！');
+            }
+        }
+    </script>
+
+</body>
+
+</html>
